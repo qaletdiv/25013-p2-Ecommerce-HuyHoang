@@ -26,6 +26,7 @@ export interface Product {
     thumbnail: string;
     category: Category;
     variants: ProductVariant[];
+    hot: boolean;
 }
 
 export interface Category {

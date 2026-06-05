@@ -3,101 +3,118 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function ContactPage() {
-  return (
-    <main className="bg-white text-gray-800">
-      {/* HERO */}
-      <section className="bg-gray-900 text-white py-16 text-center">
-        <h1 className="text-4xl font-bold mb-2">Liên hệ với chúng tôi</h1>
-        <p className="text-gray-300">
-          Chúng tôi luôn sẵn sàng hỗ trợ bạn
-        </p>
-      </section>
+    return (
+        <main className="bg-white text-neutral-900">
 
-      {/* CONTENT */}
-      <section className="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
-        
-        {/* LEFT - FORM */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-6">
-            Gửi tin nhắn
-          </h2>
+            {/* HERO */}
+            <section className="border-b border-neutral-200 py-28 text-center">
+                <p className="uppercase tracking-[0.35em] text-sm text-neutral-500 mb-5">
+                    Get In Touch
+                </p>
 
-          <form className="space-y-5">
-            <input
-              type="text"
-              placeholder="Họ và tên"
-              className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
+                <h1 className="text-5xl font-light tracking-[0.08em] mb-4">
+                    Contact Us
+                </h1>
 
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
+                <p className="text-neutral-500 max-w-xl mx-auto leading-8">
+                    We are here to assist you with inquiries, orders and
+                    everything you need for a seamless shopping experience.
+                </p>
+            </section>
 
-            <input
-              type="text"
-              placeholder="Số điện thoại"
-              className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
+            {/* CONTENT */}
+            <section className="max-w-7xl mx-auto px-8 py-24 grid lg:grid-cols-2 gap-24">
 
-            <textarea
-              placeholder="Nội dung"
-              rows={5}
-              className="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-black"
-            />
+                {/* FORM */}
+                <div>
+                    <h2 className="uppercase tracking-[0.25em] text-sm mb-10 text-neutral-500">
+                        Send Message
+                    </h2>
 
-            <button
-              type="submit"
-              className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition"
-            >
-              Gửi liên hệ
-            </button>
-          </form>
-        </div>
+                    <form className="space-y-10">
 
-        {/* RIGHT - INFO */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-6">
-            Thông tin liên hệ
-          </h2>
+                        <input
+                            type="text"
+                            placeholder="Full Name"
+                            className="w-full border-b border-neutral-300 py-4 outline-none focus:border-black transition bg-transparent"
+                        />
 
-          <div className="space-y-6 text-gray-600">
-            <div className="flex items-start gap-4">
-              <MapPin />
-              <div>
-                <p className="font-medium text-gray-800">Địa chỉ</p>
-                <p>Thanh Hóa, Việt Nam</p>
-              </div>
-            </div>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            className="w-full border-b border-neutral-300 py-4 outline-none focus:border-black transition bg-transparent"
+                        />
 
-            <div className="flex items-start gap-4">
-              <Phone />
-              <div>
-                <p className="font-medium text-gray-800">Điện thoại</p>
-                <p>0123 456 789</p>
-              </div>
-            </div>
+                        <input
+                            type="text"
+                            placeholder="Phone Number"
+                            className="w-full border-b border-neutral-300 py-4 outline-none focus:border-black transition bg-transparent"
+                        />
 
-            <div className="flex items-start gap-4">
-              <Mail />
-              <div>
-                <p className="font-medium text-gray-800">Email</p>
-                <p>support@yourbrand.com</p>
-              </div>
-            </div>
-          </div>
+                        <textarea
+                            rows={5}
+                            placeholder="Your Message"
+                            className="w-full border-b border-neutral-300 py-4 outline-none focus:border-black transition resize-none bg-transparent"
+                        />
 
-          {/* MAP */}
-          <div className="mt-8">
-            <iframe
-              src="https://maps.google.com/maps?q=Thanh%20Hoa&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-[300px] rounded-xl border"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+                        <button
+                            type="submit"
+                            className="bg-black text-white px-14 py-4 uppercase tracking-[0.2em] text-sm hover:bg-neutral-800 transition"
+                        >
+                            Send
+                        </button>
+                    </form>
+                </div>
+
+                {/* INFO */}
+                <div>
+                    <h2 className="uppercase tracking-[0.25em] text-sm mb-10 text-neutral-500">
+                        Contact Details
+                    </h2>
+
+                    <div className="space-y-10">
+
+                        <div className="flex gap-5 items-start">
+                            <MapPin className="w-5 h-5 mt-1 text-neutral-700" />
+                            <div>
+                                <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
+                                    Address
+                                </p>
+                                <p>Thanh Hóa, Việt Nam</p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-5 items-start">
+                            <Phone className="w-5 h-5 mt-1 text-neutral-700" />
+                            <div>
+                                <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
+                                    Phone
+                                </p>
+                                <p>0123 456 789</p>
+                            </div>
+                        </div>
+
+                        <div className="flex gap-5 items-start">
+                            <Mail className="w-5 h-5 mt-1 text-neutral-700" />
+                            <div>
+                                <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
+                                    Email
+                                </p>
+                                <p>support@hyperlane.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* MAP */}
+                    <div className="mt-16 border border-neutral-200 overflow-hidden">
+                        <iframe
+                            src="https://maps.google.com/maps?q=Thanh%20Hoa&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            className="w-full h-[380px]"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+            </section>
+        </main>
+    );
 }

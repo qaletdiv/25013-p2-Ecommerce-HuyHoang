@@ -2,156 +2,151 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <main className="bg-white text-gray-800">
-      {/* Hero */}
-      <section className="relative w-full h-[400px]">
+    <main className="bg-white text-neutral-900">
+
+      {/* HERO */}
+      <section className="relative h-[75vh] w-full">
         <Image
           src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b"
           alt="about-banner"
           fill
+          priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h3 className="text-white text-4xl md:text-5xl font-bold">
-            Giới thiệu thương hiệu
-          </h3>
+
+        <div className="absolute inset-0 bg-black/35 flex flex-col justify-center items-center text-white">
+
+          <p className="uppercase tracking-[0.35em] text-sm mb-6 opacity-80">
+            Our Story
+          </p>
+
+          <h1 className="text-6xl md:text-7xl font-light tracking-[0.08em]">
+            HyperLane
+          </h1>
+
         </div>
       </section>
 
-      {/* Content */}
-      <section className="max-w-4xl mx-auto px-4 py-12 leading-8">
-        {/* Title */}
-        <h2 className="text-3xl font-bold mb-6">
-          ChangeForLife là thương hiệu của nước nào?
+      {/* INTRO */}
+      <section className="max-w-6xl mx-auto px-8 py-28 border-b border-neutral-200 text-center">
+
+        <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-8">
+          Since 2026
+        </p>
+
+        <h2 className="text-5xl font-light max-w-4xl mx-auto leading-tight mb-10">
+          Redefining contemporary fashion through timeless simplicity
         </h2>
 
-        <p className="mb-4">
-          <strong>ChangeForLife</strong> là thương hiệu thời trang được sáng
-          lập tại Việt Nam, hướng đến phong cách hiện đại, tinh tế và phù hợp
-          với người Việt. Ngay từ khi ra mắt, thương hiệu đã định vị ở phân khúc
-          trung – cao cấp với mục tiêu mang đến trải nghiệm tốt nhất cho khách
-          hàng.
+        <p className="text-neutral-600 leading-8 max-w-3xl mx-auto">
+          HyperLane is a Vietnamese contemporary fashion label created for
+          individuals who value refined design, elevated essentials and modern
+          confidence.
         </p>
 
-        <p className="mb-4">
-          Không chỉ đơn thuần là thời trang, ChangeForLife còn đại diện cho
-          phong cách sống, sự tự tin và cá tính của người mặc.
-        </p>
+      </section>
 
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Hành trình phát triển
-        </h2>
+      {/* CONTENT */}
+      <section className="max-w-5xl mx-auto px-8 py-24 space-y-28">
 
-        <p className="mb-4">
-          Bắt đầu từ một thương hiệu nhỏ, ChangeForLife đã từng bước khẳng
-          định vị thế của mình trên thị trường thời trang Việt Nam.
-        </p>
+        {/* SECTION */}
+        <div>
+          <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
+            Journey
+          </p>
 
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>Năm thành lập: 2026</li>
-          <li>Khởi đầu với các sản phẩm cơ bản</li>
-          <li>Mở rộng hệ thống cửa hàng trên toàn quốc</li>
-          <li>Phát triển mạnh mẽ kênh bán hàng online</li>
-        </ul>
+          <h3 className="text-4xl font-light mb-8">
+            Our Evolution
+          </h3>
 
-        {/* Image */}
-        <div className="my-8">
+          <p className="leading-8 text-neutral-600 mb-8">
+            What began as a focused local vision has grown into a modern fashion
+            destination that serves customers nationwide through elevated design
+            and accessible luxury.
+          </p>
+
+          <ul className="space-y-4 text-neutral-700 border-l border-neutral-300 pl-8">
+            <li>2026 — Founded in Vietnam</li>
+            <li>Built on essential wardrobe pieces</li>
+            <li>Expanded through digital commerce</li>
+            <li>Growing toward international presence</li>
+          </ul>
+        </div>
+
+        {/* IMAGE */}
+        <div className="relative h-[650px]">
           <Image
             src="https://images.unsplash.com/photo-1445205170230-053b83016050"
             alt="fashion"
-            width={800}
-            height={500}
-            className="rounded-xl"
+            fill
+            className="object-cover"
           />
         </div>
 
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Triết lý thương hiệu
-        </h2>
-
-        <p className="mb-4 italic">
-          “[Slogan của bạn]”
-        </p>
-
-        <p className="mb-4">
-          ChangeForLife luôn đặt khách hàng làm trung tâm, tập trung vào ba
-          yếu tố cốt lõi:
-        </p>
-
-        <ul className="list-disc pl-6 space-y-2 mb-4">
-          <li>Chất lượng sản phẩm cao cấp</li>
-          <li>Thiết kế hiện đại, phù hợp xu hướng</li>
-          <li>Dịch vụ tận tâm, chuyên nghiệp</li>
-        </ul>
-
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Điều làm nên sự khác biệt
-        </h2>
-
-        <div className="space-y-4">
-          <p>
-            <strong>Chất liệu:</strong> Sử dụng các loại vải cao cấp như cotton,
-            linen mang lại sự thoải mái.
+        {/* PHILOSOPHY */}
+        <div>
+          <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
+            Philosophy
           </p>
-          <p>
-            <strong>Thiết kế:</strong> Tối giản nhưng tinh tế, dễ phối đồ.
-          </p>
-          <p>
-            <strong>Công nghệ:</strong> Ứng dụng kỹ thuật may hiện đại giúp sản
-            phẩm bền hơn.
-          </p>
-          <p>
-            <strong>Giá trị:</strong> Cân bằng giữa chất lượng và giá thành.
-          </p>
+
+          <h3 className="text-4xl font-light mb-8">
+            Designed For Everyday Luxury
+          </h3>
+
+          <div className="space-y-6 text-neutral-600 leading-8">
+            <p>
+              Premium materials selected for comfort and longevity.
+            </p>
+            <p>
+              Minimal silhouettes refined with modern precision.
+            </p>
+            <p>
+              Balanced craftsmanship between quality and accessibility.
+            </p>
+            <p>
+              A timeless approach beyond temporary trends.
+            </p>
+          </div>
         </div>
 
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Danh mục sản phẩm
-        </h2>
+        {/* CATEGORIES */}
+        <div>
+          <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
+            Collection
+          </p>
 
-        <ul className="grid grid-cols-2 gap-2 mb-6">
-          <li>Áo sơ mi</li>
-          <li>Áo thun / Polo</li>
-          <li>Quần dài / Quần short</li>
-          <li>Áo khoác</li>
-          <li>Phụ kiện thời trang</li>
-        </ul>
+          <h3 className="text-4xl font-light mb-10">
+            Signature Essentials
+          </h3>
 
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Tầm nhìn & Sứ mệnh
-        </h2>
+          <div className="grid md:grid-cols-2 gap-y-5 text-lg">
+            <p>Shirts</p>
+            <p>T-Shirts & Polos</p>
+            <p>Trousers & Shorts</p>
+            <p>Outerwear</p>
+            <p>Accessories</p>
+            <p>Seasonal Capsule Pieces</p>
+          </div>
+        </div>
 
-        <p className="mb-4">
-          <strong>Tầm nhìn:</strong> Trở thành thương hiệu thời trang hàng đầu
-          tại Việt Nam và vươn ra quốc tế.
-        </p>
+        {/* VISION */}
+        <div className="border-t border-neutral-200 pt-20 text-center">
 
-        <p className="mb-4">
-          <strong>Sứ mệnh:</strong> Mang đến giải pháp thời trang giúp khách hàng
-          tự tin thể hiện phong cách cá nhân.
-        </p>
+          <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-6">
+            Vision
+          </p>
 
-        {/* Section */}
-        <h2 className="text-2xl font-semibold mt-10 mb-4">
-          Cam kết
-        </h2>
+          <h3 className="text-5xl font-light mb-10">
+            Fashion That Shapes Identity
+          </h3>
 
-        <ul className="list-disc pl-6 space-y-2 mb-6">
-          <li>Sản phẩm chất lượng cao</li>
-          <li>Thiết kế luôn đổi mới</li>
-          <li>Dịch vụ tận tâm</li>
-          <li>Phát triển bền vững</li>
-        </ul>
+          <p className="max-w-3xl mx-auto leading-8 text-neutral-600">
+            HyperLane exists to empower self-expression through elevated
+            essentials that blend confidence, comfort and modern design.
+          </p>
 
-        {/* Conclusion */}
-        <p className="text-lg font-medium">
-          ChangeForLife không chỉ là thời trang – đó là phong cách sống. Chúng tôi cam kết mang đến những sản phẩm chất lượng, thiết kế tinh tế và dịch vụ tận tâm để khách hàng luôn tự tin và hài lòng.
-        </p>
+        </div>
+
       </section>
     </main>
   );
