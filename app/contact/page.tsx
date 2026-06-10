@@ -9,16 +9,15 @@ export default function ContactPage() {
             {/* HERO */}
             <section className="border-b border-neutral-200 py-28 text-center">
                 <p className="uppercase tracking-[0.35em] text-sm text-neutral-500 mb-5">
-                    Get In Touch
+                    Liên hệ
                 </p>
 
                 <h1 className="text-5xl font-light tracking-[0.08em] mb-4">
-                    Contact Us
+                    Chúng tôi sẵn sàng hỗ trợ bạn
                 </h1>
 
                 <p className="text-neutral-500 max-w-xl mx-auto leading-8">
-                    We are here to assist you with inquiries, orders and
-                    everything you need for a seamless shopping experience.
+                    Chúng tôi luôn sẵn sàng hỗ trợ bạn với các câu hỏi, đơn hàng và mọi thứ bạn cần để có được trải nghiệm mua sắm liền mạch.
                 </p>
             </section>
 
@@ -28,7 +27,7 @@ export default function ContactPage() {
                 {/* FORM */}
                 <div>
                     <h2 className="uppercase tracking-[0.25em] text-sm mb-10 text-neutral-500">
-                        Send Message
+                        Gửi tin nhắn cho chúng tôi
                     </h2>
 
                     <form className="space-y-10">
@@ -61,7 +60,7 @@ export default function ContactPage() {
                             type="submit"
                             className="bg-black text-white px-14 py-4 uppercase tracking-[0.2em] text-sm hover:bg-neutral-800 transition"
                         >
-                            Send
+                            Gửi
                         </button>
                     </form>
                 </div>
@@ -69,7 +68,7 @@ export default function ContactPage() {
                 {/* INFO */}
                 <div>
                     <h2 className="uppercase tracking-[0.25em] text-sm mb-10 text-neutral-500">
-                        Contact Details
+                        Thông tin liên hệ
                     </h2>
 
                     <div className="space-y-10">
@@ -78,7 +77,7 @@ export default function ContactPage() {
                             <MapPin className="w-5 h-5 mt-1 text-neutral-700" />
                             <div>
                                 <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
-                                    Address
+                                    Địa chỉ
                                 </p>
                                 <p>Thanh Hóa, Việt Nam</p>
                             </div>
@@ -88,7 +87,7 @@ export default function ContactPage() {
                             <Phone className="w-5 h-5 mt-1 text-neutral-700" />
                             <div>
                                 <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
-                                    Phone
+                                    Liên Hệ
                                 </p>
                                 <p>0123 456 789</p>
                             </div>

@@ -271,9 +271,8 @@ export default function ProductDetailPage({
               Thông số kỹ thuật
             </h2>
             </div>
+          </div> 
           </div>
         </div>
-      </div>
-
   );
 }

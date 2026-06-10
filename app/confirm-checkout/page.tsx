@@ -38,7 +38,7 @@ export default function OrderSuccessPage() {
         </div>
 
         <h1 className="text-5xl font-light uppercase tracking-[0.15em] mb-6">
-          Order Confirmed
+          Xác nhận đơn hàng
         </h1>
 
         <p className="text-neutral-500 text-lg">
@@ -63,7 +63,7 @@ export default function OrderSuccessPage() {
 
           <div>
             <p className="text-sm text-neutral-500 uppercase">
-              Date
+              Ngày
             </p>
 
             <p>
@@ -73,7 +73,7 @@ export default function OrderSuccessPage() {
         </div>
 
         <h2 className="text-2xl font-light mb-8">
-          Order Details
+          Chi tiết đơn hàng
         </h2>
 
         <div className="space-y-6">
@@ -123,7 +123,7 @@ export default function OrderSuccessPage() {
 
         <div className="flex justify-between text-2xl mt-10 pt-8 border-t">
           <span>
-            Total
+            Tổng
           </span>
 
           <span>
@@ -140,14 +140,14 @@ export default function OrderSuccessPage() {
           href="/sanpham"
           className="px-10 py-4 border uppercase tracking-[0.15em] hover:bg-black hover:text-white transition"
         >
-          Continue Shopping
+          Tiếp tục mua sắm
         </Link>
 
         <Link
           href="/profile"
           className="px-10 py-4 bg-black text-white uppercase tracking-[0.15em] hover:bg-neutral-800 transition"
         >
-          Order History
+          Lịch sử mua hàng
         </Link>
 
       </div>

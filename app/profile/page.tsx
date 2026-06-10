@@ -38,14 +38,14 @@ export default function ProfilePage() {
                 <div className="border border-neutral-200 p-10 h-fit">
 
                     <h2 className="text-2xl font-light mb-10">
-                        Personal Info
+                        Thông tin cá nhân
                     </h2>
 
                     <div className="space-y-8">
 
                         <div>
                             <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
-                                Full Name
+                              Tên đầy đủ
                             </p>
                             <p className="text-lg">
                                 {user.name}
@@ -63,7 +63,7 @@ export default function ProfilePage() {
 
                         <div>
                             <p className="uppercase text-xs tracking-[0.2em] text-neutral-500 mb-2">
-                                Role
+                                Vai trò
                             </p>
                             <p className="text-lg capitalize">
                                 {user.role}
@@ -76,7 +76,7 @@ export default function ProfilePage() {
                         onClick={handleLogout}
                         className="w-full mt-12 bg-black text-white py-4 uppercase tracking-[0.2em] hover:bg-neutral-800 transition"
                     >
-                        Logout
+                        Đăng xuất
                     </button>
                 </div>
 
@@ -84,7 +84,7 @@ export default function ProfilePage() {
                 <div className="md:col-span-2">
 
                     <h2 className="text-2xl font-light mb-10">
-                        Order History
+                        Lịch sử mua hàng
                     </h2>
 
                     <div className="space-y-6">

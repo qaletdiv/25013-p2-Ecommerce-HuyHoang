@@ -17,7 +17,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/35 flex flex-col justify-center items-center text-white">
 
           <p className="uppercase tracking-[0.35em] text-sm mb-6 opacity-80">
-            Our Story
+            Về Chúng Tôi
           </p>
 
           <h1 className="text-6xl md:text-7xl font-light tracking-[0.08em]">
@@ -31,17 +31,16 @@ export default function AboutPage() {
       <section className="max-w-6xl mx-auto px-8 py-28 border-b border-neutral-200 text-center">
 
         <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-8">
-          Since 2026
+          Bắt đầu năm 2026
         </p>
 
         <h2 className="text-5xl font-light max-w-4xl mx-auto leading-tight mb-10">
-          Redefining contemporary fashion through timeless simplicity
+          Định nghĩa lại thời trang đương đại thông qua sự đơn giản vượt thời gian.
         </h2>
 
         <p className="text-neutral-600 leading-8 max-w-3xl mx-auto">
-          HyperLane is a Vietnamese contemporary fashion label created for
-          individuals who value refined design, elevated essentials and modern
-          confidence.
+          HyperLane là một thương hiệu thời trang đương đại của Việt Nam, được tạo ra dành cho
+          những người coi trọng thiết kế tinh tế, những món đồ thiết yếu cao cấp và sự tự tin hiện đại.
         </p>
 
       </section>
@@ -52,24 +51,22 @@ export default function AboutPage() {
         {/* SECTION */}
         <div>
           <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
-            Journey
+            Hành trình
           </p>
 
           <h3 className="text-4xl font-light mb-8">
-            Our Evolution
+            Sự phát triển của chúng tôi
           </h3>
 
           <p className="leading-8 text-neutral-600 mb-8">
-            What began as a focused local vision has grown into a modern fashion
-            destination that serves customers nationwide through elevated design
-            and accessible luxury.
+            Khởi đầu từ một tầm nhìn địa phương tập trung, nay đã phát triển thành một điểm đến thời trang hiện đại, phục vụ khách hàng trên toàn quốc thông qua thiết kế cao cấp và sự sang trọng dễ tiếp cận.
           </p>
 
           <ul className="space-y-4 text-neutral-700 border-l border-neutral-300 pl-8">
-            <li>2026 — Founded in Vietnam</li>
-            <li>Built on essential wardrobe pieces</li>
-            <li>Expanded through digital commerce</li>
-            <li>Growing toward international presence</li>
+            <li>2026 — Thành lập tại Việt Nam</li>
+            <li>Được xây dựng dựa trên những món đồ thiết yếu trong tủ quần áo.</li>
+            <li>Mở rộng thông qua thương mại điện tử</li>
+            <li>Phát triển theo hướng sự hiện diện quốc tế</li>
           </ul>
         </div>
 
@@ -86,25 +83,25 @@ export default function AboutPage() {
         {/* PHILOSOPHY */}
         <div>
           <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
-            Philosophy
+            Triết lý
           </p>
 
           <h3 className="text-4xl font-light mb-8">
-            Designed For Everyday Luxury
+            Được Thiết Kế Cho Sự Sang Trọng Hàng Ngày
           </h3>
 
           <div className="space-y-6 text-neutral-600 leading-8">
             <p>
-              Premium materials selected for comfort and longevity.
+              Vật liệu cao cấp được lựa chọn để đảm bảo sự thoải mái và độ bền.
             </p>
             <p>
-              Minimal silhouettes refined with modern precision.
+              Đường nét tối giản được tinh chỉnh với sự chính xác hiện đại.
             </p>
             <p>
-              Balanced craftsmanship between quality and accessibility.
+              Sự cân bằng trong nghệ thuật thủ công giữa chất lượng và khả năng tiếp cận.
             </p>
             <p>
-              A timeless approach beyond temporary trends.
+              Tiếp cận thời gian không giới hạn vượt qua các xu hướng tạm thời.
             </p>
           </div>
         </div>
@@ -112,7 +109,7 @@ export default function AboutPage() {
         {/* CATEGORIES */}
         <div>
           <p className="uppercase tracking-[0.25em] text-sm text-neutral-500 mb-6">
-            Collection
+            Bộ Sưu Tập
           </p>
 
           <h3 className="text-4xl font-light mb-10">
@@ -120,29 +117,28 @@ export default function AboutPage() {
           </h3>
 
           <div className="grid md:grid-cols-2 gap-y-5 text-lg">
-            <p>Shirts</p>
-            <p>T-Shirts & Polos</p>
-            <p>Trousers & Shorts</p>
-            <p>Outerwear</p>
-            <p>Accessories</p>
-            <p>Seasonal Capsule Pieces</p>
+            <p>Áo sơ mi</p>
+            <p>Áo thun & Áo polo</p>
+            <p>Quần & Short</p>
+            <p>Áo khoác</p>
+            <p>Phụ kiện</p>
+            <p>Thành phần capsule theo mùa</p>
           </div>
         </div>
 
         {/* VISION */}
         <div className="border-t border-neutral-200 pt-20 text-center">
 
-          <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-6">
-            Vision
+          <p className="uppercase tracking-[0.3em] text-sm text-neutral-500 mb-6">   
+            Tầm nhìn
           </p>
 
           <h3 className="text-5xl font-light mb-10">
-            Fashion That Shapes Identity
+            Thời trang định hình bản sắc
           </h3>
 
           <p className="max-w-3xl mx-auto leading-8 text-neutral-600">
-            HyperLane exists to empower self-expression through elevated
-            essentials that blend confidence, comfort and modern design.
+            HyperLane ra đời để thúc đẩy sự thể hiện bản thân thông qua những sản phẩm thiết yếu cao cấp, kết hợp giữa sự tự tin, thoải mái và thiết kế hiện đại.
           </p>
 
         </div>

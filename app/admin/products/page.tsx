@@ -1,46 +1,110 @@
-import ProductsCard from "../../components/productsCard";
+import Link from "next/link";
 import { Product } from "../../types/types";
 
-export default async function Home() {
+export default async function AdminProductsPage() {
   const products: Product[] = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE}/api/products`,
     {
       cache: "no-store",
     }
   ).then((res) => res.json());
-  // show danh sách sản phẩm trang admin dưới dạng bảng với các cột: ID, Tên sản phẩm, Danh mục, Giá thấp nhất, Hành động (Sửa/Xóa)
+
   return (
-    <main className="w-full bg-white text-neutral-900">
-        <section className="max-w-7xl mx-auto px-8 py-24">
-            <h1 className="text-5xl font-light tracking-[0.04em] mb-10">
-                Quản Lý Sản Phẩm
-            </h1>
-            <table className="w-full border-collapse">
-                <thead>
-                    <tr>
-                        <th className="border-b border-neutral-200 text-left py-3">ID</th>
-                        <th className="border-b border-neutral-200 text-left py-3">Tên sản phẩm</th>
-                        <th className="border-b border-neutral-200 text-left py-3">Danh mục</th>
-                        <th className="border-b border-neutral-200 text-left py-3">Giá thấp nhất</th>
-                        <th className="border-b border-neutral-200 text-left py-3">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product) => (
-                        <tr key={product.id}>
-                            <td className="border-b border-neutral-200 py-3">{product.id}</td>
-                            <td className="border-b border-neutral-200 py-3">{product.name}</td>
-                            <td className="border-b border-neutral-200 py-3">{product. category.name}</td>
-                            <td className="border-b border-neutral-200 py-3">{Math.min(...product.variants.map((v) => v.price)).toLocaleString()} VND</td>
-                            <td className="border-b border-neutral-200 py-3">
-                                <button className="text-blue-500 hover:underline mr-4">Sửa</button>
-                                <button className="text-red-500 hover:underline">Xóa</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </section>
+    <main className="max-w-7xl mx-auto px-8 py-16">
+      <div className="flex items-center justify-between mb-10">
+        <h1 className="text-4xl font-light">
+          Quản Lý Sản Phẩm
+        </h1>
+
+        <Link
+          href="/admin/products/create"
+          className="px-5 py-3 bg-black text-white"
+        >
+          Thêm sản phẩm
+        </Link>
+      </div>
+
+      <div className="overflow-x-auto border">
+        <table className="w-full">
+          <thead className="bg-neutral-100">
+            <tr>
+              <th className="text-left p-4">
+                ID
+              </th>
+
+              <th className="text-left p-4">
+                Tên sản phẩm
+              </th>
+
+              <th className="text-left p-4">
+                Danh mục
+              </th>
+
+              <th className="text-left p-4">
+                Giá thấp nhất
+              </th>
+
+              <th className="text-center p-4">
+                Hành động
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {products.map((product) => {
+              const minPrice =
+                product.variants?.length
+                  ? Math.min(
+                      ...product.variants.map(
+                        (v) => v.price
+                      )
+                    )
+                  : 0;
+
+              return (
+                <tr
+                  key={product.id}
+                  className="border-t"
+                >
+                  <td className="p-4">
+                    {product.id}
+                  </td>
+
+                  <td className="p-4">
+                    {product.name}
+                  </td>
+
+                  <td className="p-4">
+                    {product.category?.name}
+                  </td>
+
+                  <td className="p-4">
+                    {minPrice.toLocaleString()}
+                    ₫
+                  </td>
+
+                  <td className="p-4">
+                    <div className="flex justify-center gap-4">
+                      <Link
+                        href={`/admin/products/edit/${product.id}`}
+                        className="text-blue-500 hover:underline"
+                      >
+                        Sửa
+                      </Link>
+
+                      <button
+                        className="text-red-500 hover:underline"
+                      >
+                        Xóa
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </main>
-  ); 
+  );
 }
