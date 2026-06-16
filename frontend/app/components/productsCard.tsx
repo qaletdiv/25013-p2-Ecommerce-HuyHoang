@@ -1,58 +1,78 @@
-import { Product } from "../types/types";
-import Link from "next/link";
+"use client";
 
-const ProductsCard = ({
+import Link from "next/link";
+import { Product } from "../types/types";
+import { useCart } from "../context/CartContext";
+import { formatPrice } from "@/utils/formatPrice";
+
+export default function ProductsCard({
   product,
 }: {
   product: Product;
-}) => {
-  const price =
-    product.variants?.[0]?.price || 0;
+}) {
+  const { addToCart } = useCart();
+
+  const firstVariant =
+    product.variants?.[0];
+
+  const handleAddToCart = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    e.preventDefault();
+
+    if (!firstVariant) return;
+
+    addToCart({
+      id: `${product.id}-${firstVariant.id}`,
+      productId: product.id.toString(),
+      variantId: firstVariant.id.toString(),
+      name: product.name,
+      price: firstVariant.price,
+      thumbnail: product.thumbnail,
+      color: firstVariant.color,
+      size: firstVariant.size,
+      quantity: 1,
+    });
+  };
 
   return (
-    <Link
-      href={`/sanpham/${product.slug}`}
-      className="group block"
-    >
-      <article>
-
-        {/* IMAGE */}
+    <article className="group block">
+      <Link
+        href={`/sanpham/${product.slug}`}
+        className="group block"
+      >
         <div className="relative overflow-hidden bg-neutral-100 aspect-[3/4]">
-
           <img
             src={product.thumbnail}
             alt={product.name}
             className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
           />
 
-          {/* subtle overlay */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition duration-500" />
-
         </div>
 
-        {/* CONTENT */}
         <div className="pt-6 space-y-3">
-
-          {/* CATEGORY */}
-          <p className="uppercase tracking-[0.22em] text-xs text-neutral-500 font-medium">
-            {product.category?.name ||
-              "HyperLane"}
+          <p className="uppercase tracking-[0.22em] text-xs text-neutral-500">
+            {product.category?.name}
           </p>
 
-          {/* NAME */}
-          <h3 className="text-xl font-light tracking-[0.02em] text-neutral-900 leading-snug group-hover:text-black transition">
+          <h3 className="text-xl font-light">
             {product.name}
           </h3>
 
-          {/* PRICE */}
-          <p className="text-lg font-light text-neutral-700 pt-1">
-            {price.toLocaleString()}₫
+          <p className="text-lg">
+            {formatPrice(firstVariant?.price || 0)}₫
           </p>
-
         </div>
-      </article>
-    </Link>
-  );
-};
+      </Link>
 
-export default ProductsCard;
+      <button
+        type="button"
+        onClick={handleAddToCart}
+        className="w-full border border-black py-3 mt-4 hover:bg-black hover:text-white transition"
+      >
+        Thêm vào giỏ hàng
+      </button>
+    </article>
+  );
+}

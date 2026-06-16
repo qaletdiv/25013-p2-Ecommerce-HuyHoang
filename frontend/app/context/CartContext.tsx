@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useState,
+  useEffect,
 } from "react";
 
 type CartItem = {
@@ -30,6 +31,46 @@ const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [mounted, setMounted] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+
+  // Load cart for current user when component mounts
+  useEffect(() => {
+    const loadCartForUser = () => {
+      const user = localStorage.getItem("user");
+      const userId = user ? JSON.parse(user).id : null;
+      
+      setCurrentUserId(userId);
+
+      if (userId) {
+        const savedCart = localStorage.getItem(`cart_${userId}`);
+        if (savedCart) {
+          setCart(JSON.parse(savedCart));
+        } else {
+          setCart([]);
+        }
+      } else {
+        setCart([]);
+      }
+    };
+
+    loadCartForUser();
+    setMounted(true);
+
+    // Monitor for user changes (login/logout)
+    const interval = setInterval(loadCartForUser, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Save cart to localStorage when it changes
+  useEffect(() => {
+    if (!mounted || !currentUserId) return;
+
+    localStorage.setItem(
+      `cart_${currentUserId}`,
+      JSON.stringify(cart)
+    );
+  }, [cart, mounted, currentUserId]);
 
   const addToCart = (item: Omit<CartItem, "quantity"> & { quantity?: number }) => {
     setCart((prev) => {
@@ -37,19 +78,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const quantityToAdd = item.quantity ?? 1;
 
       if (exist) {
-        const newCart = prev.map((p) =>
+        return prev.map((p) =>
           p.id === item.id
             ? {
-                ...p,
-                quantity: p.quantity + quantityToAdd,
-              }
+              ...p,
+              quantity: p.quantity + quantityToAdd,
+            }
             : p
         );
-        return newCart;
       }
 
-      const newCart = [...prev, { ...item, quantity: quantityToAdd }];
-      return newCart;
+      return [...prev, { ...item, quantity: quantityToAdd }];
     });
   };
 
@@ -86,10 +125,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
 const defaultCartContext: CartContextType = {
   cart: [],
-  addToCart: () => {},
-  removeFromCart: () => {},
-  updateQuantity: () => {},
-  clearCart: () => {},
+  addToCart: () => { },
+  removeFromCart: () => { },
+  updateQuantity: () => { },
+  clearCart: () => { },
 };
 
 export const useCart = () => {

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { formatPrice } from "@/utils/formatPrice";
 
 export default function OrderSuccessPage() {
   const [order, setOrder] =
@@ -110,10 +111,7 @@ export default function OrderSuccessPage() {
                 </div>
 
                 <p>
-                  {(
-                    item.price *
-                    item.quantity
-                  ).toLocaleString()}
+                  {formatPrice(item.price * item.quantity)}
                   ₫
                 </p>
               </div>
@@ -127,7 +125,7 @@ export default function OrderSuccessPage() {
           </span>
 
           <span>
-            {order.total.toLocaleString()}
+            {formatPrice(order.total)}
             ₫
           </span>
         </div>

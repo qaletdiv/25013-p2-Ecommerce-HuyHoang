@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "../context/CartContext";
+import { formatPrice } from "@/utils/formatPrice";
 
 type Payment = {
     id: string;
@@ -150,7 +151,7 @@ export default function CheckoutPage() {
     if (loading) {
         return (
             <div className="h-screen flex items-center justify-center">
-                Loading...
+                Đang tải ...
             </div>
         );
     }
@@ -158,30 +159,30 @@ export default function CheckoutPage() {
     return (
         <div className="max-w-7xl mx-auto px-8 py-20">
             <h1 className="text-5xl font-light mb-16 uppercase">
-                Checkout
+                Xác nhận đơn hàng   
             </h1>
 
             <div className="grid md:grid-cols-2 gap-20">
                 {/* LEFT */}
                 <div>
                     {/* SHIPPING */}
-                    <Section title="Shipping">
+                    <Section title="Thông tin giao hàng">
                         <Input
-                            placeholder="Name"
+                            placeholder="Họ và tên"
                             value={shipping.name}
                             onChange={(v:any) =>
                                 updateShipping("name", v)
                             }
                         />
                         <Input
-                            placeholder="Phone"
+                            placeholder="Số điện thoại"
                             value={shipping.phone}
                             onChange={(v:any) =>
                                 updateShipping("phone", v)
                             }
                         />
                         <Textarea
-                            placeholder="Address"
+                            placeholder="Địa chỉ"
                             value={shipping.address}
                             onChange={(v:any) =>
                                 updateShipping("address", v)
@@ -190,7 +191,7 @@ export default function CheckoutPage() {
                     </Section>
 
                     {/* PAYMENT */}
-                    <Section title="Payment">
+                    <Section title="Phương thức thanh toán">
                         <div className="grid md:grid-cols-2 gap-8">
                             <div className="space-y-4">
                                 {payments.map((method) => (
@@ -226,7 +227,7 @@ export default function CheckoutPage() {
                 {/* RIGHT */}
                 <div className="border p-10 h-fit">
                     <h2 className="text-2xl mb-8">
-                        Order Summary
+                        Tổng quan đơn hàng
                     </h2>
 
                     <div className="space-y-4">
@@ -239,9 +240,7 @@ export default function CheckoutPage() {
                                     {item.name} x {item.quantity}
                                 </span>
                                 <span>
-                                    {(
-                                        item.price * item.quantity
-                                    ).toLocaleString()}
+                                    {formatPrice(item.price * item.quantity)}
                                     ₫
                                 </span>
                             </div>
@@ -251,7 +250,7 @@ export default function CheckoutPage() {
                     <div className="border-t pt-6 mt-8 flex justify-between text-xl">
                         <span>Tổng cộng</span>
                         <span>
-                            {total.toLocaleString()}₫
+                            {formatPrice(total)}₫
                         </span>
                     </div>
 

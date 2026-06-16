@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { formatPrice } from "@/utils/formatPrice";
 
 type Variant = {
   id: string;
@@ -35,6 +36,17 @@ export default function ProductsPage() {
   const [category, setCategory] = useState("all");
   const [price, setPrice] = useState("all");
   const [sort, setSort] = useState("default");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const PRODUCTS_PER_PAGE = 8;
+
+  const changePage = (page: number) => {
+    setCurrentPage(page);
+
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/products`)
@@ -99,6 +111,21 @@ export default function ProductsPage() {
 
     return data;
   }, [products, search, category, price, sort]);
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search, category, price, sort]);
+
+  // Pagination calculations
+  const totalPages = Math.ceil(
+    filteredProducts.length / PRODUCTS_PER_PAGE
+  );
+
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  );
 
   if (loading) {
     return (
@@ -207,7 +234,7 @@ export default function ProductsPage() {
       {/* Product Grid */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-20">
 
-        {filteredProducts.map(
+        {paginatedProducts.map(
           (product) => {
             const minPrice =
               Math.min(
@@ -256,7 +283,7 @@ export default function ProductsPage() {
                   <div className="flex justify-between items-center mt-6">
 
                     <span className="text-lg font-medium">
-                      {minPrice.toLocaleString()}
+                      {formatPrice(minPrice)}
                       ₫
                     </span>
 
@@ -269,8 +296,43 @@ export default function ProductsPage() {
               </Link>
             );
           }
-        )}
+          )}
       </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-3 mt-12">
+            <button
+              onClick={() => changePage(Math.max(1, currentPage - 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 border disabled:opacity-30"
+            >
+              ←
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => changePage(page)}
+                className={`w-10 h-10 border transition ${
+                  currentPage === page
+                    ? "bg-black text-white"
+                    : "hover:bg-neutral-100"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              onClick={() => changePage(Math.min(totalPages, currentPage + 1))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 border disabled:opacity-30"
+            >
+              →
+            </button>
+          </div>
+        )}
 
       {/* Empty */}
       {filteredProducts.length ===

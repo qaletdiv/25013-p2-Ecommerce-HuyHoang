@@ -9,6 +9,9 @@ export default async function AdminProductsPage() {
     }
   ).then((res) => res.json());
 
+  const formatPrice = (price: number) =>
+  new Intl.NumberFormat("vi-VN").format(price) + "₫";
+
   return (
     <main className="max-w-7xl mx-auto px-8 py-16">
       <div className="flex items-center justify-between mb-10">
@@ -79,8 +82,7 @@ export default async function AdminProductsPage() {
                   </td>
 
                   <td className="p-4">
-                    {minPrice.toLocaleString()}
-                    ₫
+                    {formatPrice(minPrice)}
                   </td>
 
                   <td className="p-4">

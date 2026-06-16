@@ -63,7 +63,11 @@ export default function Header() {
 
                         {/* Cart */}
                         <Link
-                            href="/cart"
+                            href={
+                                user
+                                    ? "/cart"
+                                    : "/login"
+                            }
                             className="relative text-neutral-500 hover:text-black transition"
                         >
                             <svg

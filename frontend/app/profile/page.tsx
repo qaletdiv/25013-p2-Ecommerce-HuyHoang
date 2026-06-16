@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatPrice } from "@/utils/formatPrice";
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -112,7 +113,7 @@ export default function ProfilePage() {
                                     </div>
 
                                     <p className="text-xl font-light mb-3">
-                                        {order.total.toLocaleString()}
+                                        {formatPrice(order.total)}
                                         ₫
                                     </p>
 

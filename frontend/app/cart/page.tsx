@@ -1,20 +1,50 @@
 "use client";
 
-import { useCart } from "../context/CartContext";
 import Link from "next/link";
+import { useCart } from "../context/CartContext";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { formatPrice } from "@/utils/formatPrice";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity } =
-    useCart();
+  const router = useRouter();
 
+  const [loading, setLoading] =
+    useState(true);
+
+  const {
+    cart,
+    removeFromCart,
+    updateQuantity,
+  } = useCart();
+
+  useEffect(() => {
+    const user =
+      localStorage.getItem("user");
+
+    if (
+      !user ||
+      user === "undefined"
+    ) {
+      router.replace("/login");
+      return;
+    }
+
+    setLoading(false);
+  }, [router]);
+
+  if (loading) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        Đang kiểm tra đăng nhập...
+      </div>
+    );
+  }
   const total = cart.reduce(
     (sum, item) =>
       sum + item.price * item.quantity,
     0
   );
-
-  const router = useRouter();
 
   if (cart.length === 0) {
     return (
@@ -29,7 +59,7 @@ export default function CartPage() {
 
         <Link
           href="/sanpham"
-          className="bg-black text-white px-10 py-4 uppercase text-sm tracking-[0.2em] hover:bg-neutral-800 transition"
+          className="bg-black text-white px-10 py-4 uppercase text-sm tracking-[0.2em]"
         >
           Tiếp Tục Mua Sắm
         </Link>
@@ -39,13 +69,12 @@ export default function CartPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-8 py-20">
-      {/* Title */}
       <h1 className="text-5xl font-light uppercase tracking-[0.18em] mb-16">
-        Shopping Bag
+        Túi Mua Sắm Của Bạn
       </h1>
 
       <div className="grid lg:grid-cols-3 gap-16">
-        {/* Left */}
+        {/* Danh sách sản phẩm */}
         <div className="lg:col-span-2 space-y-10">
           {cart.map((item) => (
             <div
@@ -69,28 +98,24 @@ export default function CartPage() {
                   </p>
 
                   <p className="text-xl mt-5">
-                    {item.price.toLocaleString()}₫
+                    {formatPrice(item.price)}₫
                   </p>
                 </div>
 
-                {/* Quantity */}
                 <div className="flex items-center gap-5 mt-8">
                   <button
                     onClick={() =>
                       updateQuantity(
                         item.id,
-                        Math.max(
-                          1,
-                          item.quantity - 1
-                        )
+                        item.quantity - 1
                       )
                     }
-                    className="w-12 h-12 border hover:bg-black hover:text-white transition"
+                    className="w-12 h-12 border"
                   >
                     −
                   </button>
 
-                  <span className="text-lg w-8 text-center">
+                  <span className="w-8 text-center">
                     {item.quantity}
                   </span>
 
@@ -101,7 +126,7 @@ export default function CartPage() {
                         item.quantity + 1
                       )
                     }
-                    className="w-12 h-12 border hover:bg-black hover:text-white transition"
+                    className="w-12 h-12 border"
                   >
                     +
                   </button>
@@ -112,53 +137,55 @@ export default function CartPage() {
                 onClick={() =>
                   removeFromCart(item.id)
                 }
-                className="text-sm uppercase tracking-[0.15em] text-neutral-400 hover:text-black transition"
+                className="text-sm text-red-500"
               >
-                Xóa Khỏi Giỏ Hàng
+                Xóa
               </button>
             </div>
           ))}
         </div>
 
-        {/* Right */}
+        {/* Tổng đơn hàng */}
         <div className="border border-neutral-200 p-10 h-fit sticky top-28">
-          <h2 className="text-2xl font-light uppercase tracking-[0.15em] mb-10">
+          <h2 className="text-2xl font-light uppercase mb-8">
             Đơn Hàng Của Bạn
           </h2>
 
-          <div className="space-y-5 text-sm tracking-wide">
+          <div className="space-y-4">
             <div className="flex justify-between">
-              <span>Tóm Tắt Đơn Hàng</span>
+              <span>Tạm tính</span>
               <span>
-                {total.toLocaleString()}₫
+                {formatPrice(total)}₫
               </span>
             </div>
 
             <div className="flex justify-between">
-              <span>Vận Chuyển</span>
-              <span>Miễn Phí</span>
+              <span>Vận chuyển</span>
+              <span>Miễn phí</span>
             </div>
           </div>
 
-          <div className="border-t border-neutral-200 mt-8 pt-8 flex justify-between text-xl font-medium">
-            <span>Total</span>
+          <div className="border-t mt-6 pt-6 flex justify-between text-xl font-semibold">
+            <span>Tổng cộng</span>
             <span>
-              {total.toLocaleString()}₫
+              {formatPrice(total)}₫
             </span>
           </div>
 
           <button
-            onClick={() => router.push("/checkout")}
-            className="w-full mt-8 bg-black text-white py-4 rounderd-xl hover:opacity-90 transition"
+            onClick={() =>
+              router.push("/checkout")
+            }
+            className="w-full mt-8 bg-black text-white py-4"
           >
             Thanh Toán
           </button>
 
           <Link
             href="/sanpham"
-            className="block text-center mt-6 text-sm uppercase tracking-[0.15em] text-neutral-500 hover:text-black transition"
+            className="block text-center mt-5 text-sm"
           >
-            Tiếp Tục Mua Sắm
+            Tiếp tục mua sắm
           </Link>
         </div>
       </div>
