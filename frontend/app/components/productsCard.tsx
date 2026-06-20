@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Product } from "../types/types";
 import { useCart } from "../context/CartContext";
 import { formatPrice } from "@/utils/formatPrice";
@@ -10,6 +11,7 @@ export default function ProductsCard({
 }: {
   product: Product;
 }) {
+  const router = useRouter();
   const { addToCart } = useCart();
 
   const firstVariant =
@@ -19,6 +21,13 @@ export default function ProductsCard({
     e: React.MouseEvent<HTMLButtonElement>
   ) => {
     e.preventDefault();
+
+    const user = localStorage.getItem("user");
+
+    if (!user || user === "undefined") {
+      router.push("/login");
+      return;
+    }
 
     if (!firstVariant) return;
 
